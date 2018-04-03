@@ -1,0 +1,9 @@
+{
+  "verbose": true,
+  "ignore": ["*.test.js", ".cache/*", ".serverless/*", "./dist/*", "./node_modules/*"],
+  "delay": 1000,
+  "execMap": {
+    "js": "npm run dev",
+    "yml": "npm run dev"
+  }
+}

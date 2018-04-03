@@ -1,0 +1,19 @@
+service: lambda-dashboard
+
+provider:
+  name: aws
+  runtime: nodejs6.10
+
+plugins:
+  - serverless-offline
+
+functions:
+  main:
+    handler: lambda.handler
+    events:
+      - http:
+          path: /
+          method: ANY
+      - http:
+          path: /{any+}
+          method: ANY
