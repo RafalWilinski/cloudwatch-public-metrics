@@ -9,33 +9,40 @@ import App from './client/App';
 import Html from './client/Html';
 
 dotenv.config();
+
 const port = 3000;
+const Namespace = 'AWS/Lambda';
 const server = express();
 
 const cloudwatch = new AWS.CloudWatch();
 const lambda = new AWS.Lambda();
 
-const getStatisticValues = () => {} // todo
+const getStatisticValues = (params) => {
+  return cloudwatch.getMetricStatistics({
+    Namespace,
+    ...params,
+  }).promise()
+}
 
 server.get('/', async (req, res) => {
   const { Metrics } = await cloudwatch.listMetrics({
     Namespace: 'AWS/Lambda'
   }).promise();
 
-  const funcMetrics = {};
-
-  Metrics.forEach((metric) => {
-    if (metric.Dimensions[0] && metric.Dimensions[0].Name === 'FunctionName') { //TODO: Scan instead of peeking first el
-      const name = metric.Dimensions[0].FunctionName.Name;
-      if (!funcMetrics.hasOwnProperty(name)) {
-        funcMetrics[name] = {};
-      }
-      
-      funcMetrics[name][metric.MetricName] = getStatisticValues(metric.MetricName, metric.Dimensions[0]);
+  const metrics = await Promise.all(Metrics.map((metric) => {
+    if (metric.Dimensions[0] && metric.Dimensions[0].Name === 'FunctionName') { //TODO: Scan instead of peeking first elem      
+      return getStatisticValues({
+        MetricName: metric.MetricName,
+        Dimensions: [metric.Dimensions[0]],
+        EndTime: req.query.endTime || 1523134660,
+        Period: req.query.period || 18000,
+        StartTime: req.query.startTime,
+        Statistics: [
+          'Average'
+        ]
+      });
     }
-  })
-
-  console.log(metrics);
+  }));
 
   const sheet = new ServerStyleSheet();
   const body = renderToString(sheet.collectStyles(<App metrics={metrics} />));
