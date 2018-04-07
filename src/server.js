@@ -1,5 +1,7 @@
 import express from 'express';
 import React from 'react';
+import fs from 'fs';
+import path from 'path';
 import { renderToString } from 'react-dom/server';
 import dotenv from 'dotenv';
 import { ServerStyleSheet } from 'styled-components';
@@ -25,9 +27,7 @@ const getStatisticValues = (params) => {
 }
 
 server.get('/', async (req, res) => {
-  const { Metrics } = await cloudwatch.listMetrics({
-    Namespace: 'AWS/Lambda'
-  }).promise();
+  const { Metrics } = await cloudwatch.listMetrics({ Namespace }).promise();
 
   const metrics = await Promise.all(Metrics.map((metric) => {
     if (metric.Dimensions[0] && metric.Dimensions[0].Name === 'FunctionName') { //TODO: Scan instead of peeking first elem      
@@ -36,7 +36,7 @@ server.get('/', async (req, res) => {
         Dimensions: [metric.Dimensions[0]],
         EndTime: req.query.endTime || 1523134660,
         Period: req.query.period || 18000,
-        StartTime: req.query.startTime,
+        StartTime: req.query.startTime || 1513134660,
         Statistics: [
           'Average'
         ]
@@ -53,7 +53,8 @@ server.get('/', async (req, res) => {
     Html({
       body,
       styles,
-      title
+      script: fs.readFileSync(path.join(__dirname, 'dist/client.js')),
+      title,
     })
   );
 });

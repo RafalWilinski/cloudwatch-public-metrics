@@ -12,6 +12,20 @@ const AppContainer = styled.div`
   background: linear-gradient(20deg, rgb(219, 112, 147), #daa357);
 `;
 
-const App = () => <AppContainer>💅</AppContainer>;
+class App extends React.Component {
+  render() {
+    console.log('Rendering!!!');
+    
+    return (
+      <div onClick={() => console.log('huj')}>
+      <AppContainer  onClick={() => console.log('huj')}>💅</AppContainer>
+      </div>
+    )
+  }
+
+  componentDidMount() {
+    console.log('jeebac: ' + this.props);
+  }
+}
 
 export default App;

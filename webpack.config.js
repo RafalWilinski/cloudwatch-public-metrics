@@ -3,7 +3,25 @@ const webpack = require('webpack');
 const nodeExternals = require('webpack-node-externals');
 const path = require('path');
 
-module.exports = {
+const clientConfig = {
+  entry: './src/client/index.js',
+  output: {
+    path: path.resolve(__dirname, 'dist'),
+    filename: 'client.js',
+    publicPath: '/',
+  },
+  devtool: 'cheap-module-source-map',
+  module: {
+    loaders: [
+      {
+        test: /\.js$/,
+        loader: 'babel-loader'
+      }
+    ]
+  }
+};
+
+const serverConfig = {
   entry: './src/server.js',
   output: {
     path: path.resolve(__dirname, 'dist'),
@@ -29,3 +47,6 @@ module.exports = {
     ]
   }
 };
+
+
+module.exports = [clientConfig, serverConfig];
