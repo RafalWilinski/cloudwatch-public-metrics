@@ -1,5 +1,6 @@
-import React from 'react';
-import styled from 'styled-components';
+import React from "react";
+import styled from "styled-components";
+import { VictoryChart, VictoryLine, VictoryTheme } from "victory";
 
 const AppContainer = styled.div`
   display: flex;
@@ -14,17 +15,27 @@ const AppContainer = styled.div`
 
 class App extends React.Component {
   render() {
-    console.log('Rendering!!!');
-    
     return (
-      <div onClick={() => console.log('huj')}>
-      <AppContainer  onClick={() => console.log('huj')}>💅</AppContainer>
+      <div onClick={() => console.log("huj")}>
+        <AppContainer onClick={() => console.log("huj")}>
+          <VictoryChart theme={VictoryTheme.material}>
+            <VictoryLine
+              style={{
+                data: { stroke: "#c43a31" },
+                parent: { border: "1px solid #ccc" },
+              }}
+              data={[
+                { x: 1, y: 2 },
+                { x: 2, y: 3 },
+                { x: 3, y: 5 },
+                { x: 4, y: 4 },
+                { x: 5, y: 7 },
+              ]}
+            />
+          </VictoryChart>
+        </AppContainer>
       </div>
-    )
-  }
-
-  componentDidMount() {
-    console.log('jeebac: ' + this.props);
+    );
   }
 }
 

@@ -1,4 +1,4 @@
-const Html = ({ body, styles, script, title }) => `
+const Html = ({ body, styles, title }) => `
   <!DOCTYPE html>
   <html>
     <head>
@@ -8,7 +8,6 @@ const Html = ({ body, styles, script, title }) => `
     <body style="margin:0">
       <div id="app">${body}</div>
     </body>
-    <script src="${script}" />
   </html>
 `;
 
