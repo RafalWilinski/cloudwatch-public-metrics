@@ -16,25 +16,17 @@ const AppContainer = styled.div`
 class App extends React.Component {
   render() {
     return (
-      <div onClick={() => console.log("huj")}>
-        <AppContainer onClick={() => console.log("huj")}>
-          <VictoryChart theme={VictoryTheme.material}>
-            <VictoryLine
-              style={{
-                data: { stroke: "#c43a31" },
-                parent: { border: "1px solid #ccc" },
-              }}
-              data={[
-                { x: 1, y: 2 },
-                { x: 2, y: 3 },
-                { x: 3, y: 5 },
-                { x: 4, y: 4 },
-                { x: 5, y: 7 },
-              ]}
-            />
-          </VictoryChart>
-        </AppContainer>
-      </div>
+      <AppContainer>
+        <VictoryChart theme={VictoryTheme.material}>
+          <VictoryLine
+            style={{
+              data: { stroke: "#c43a31" },
+              parent: { border: "1px solid #ccc" },
+            }}
+            data={[{ x: 1, y: 2 }, { x: 2, y: 3 }, { x: 3, y: 5 }, { x: 4, y: 4 }, { x: 5, y: 7 }]}
+          />
+        </VictoryChart>
+      </AppContainer>
     );
   }
 }

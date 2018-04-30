@@ -1,6 +1,4 @@
-environment:
-  METRIC_NAME: AWS/Billing
-  DATE: now
-  PERIOD: 1 day
-  ALLOW_CUSTOM_METRIC: false
-  ALLOW_CUSTOM_DATE: false
+METRIC_NAME: AWS/Billing//EstimatedCharges
+PERIOD: 1 day
+ALLOW_CUSTOM_METRIC: false
+ALLOW_CUSTOM_DATE: false
