@@ -31,25 +31,37 @@ server.get("/", async (req, res) => {
   const sheet = new ServerStyleSheet();
 
   try {
-    const { METRIC_NAME, DURATION } = process.env;
-    const MetricName = METRIC_NAME.split("//")[1];
-    const Namespace = METRIC_NAME.split("//")[0];
-    const DurationKey = DURATION.split(" ")[1];
-    const DurationValue = DURATION.split(" ")[0];
-    const StartTime = DateTime.local().minus({ [DurationKey]: DurationValue });
+    const { metricName, duration, dimensions, statistic } = server.get("cloudwatch");
+
+    const MetricName = metricName.split("//")[1];
+    const Namespace = metricName.split("//")[0];
+    const DurationKey = duration.split(" ")[1];
+    const DurationValue = duration.split(" ")[0];
+    const StartTime = DateTime.local()
+      .minus({ [DurationKey]: DurationValue })
+      .toUTC()
+      .toISO();
+    const EndTime = DateTime.local()
+      .toUTC()
+      .toISO();
 
     const params = {
       MetricName,
       Namespace,
-      EndTime: DateTime.local(),
-      Period: 180,
+      EndTime,
+      Period: 1800,
       StartTime,
+      Dimensions: dimensions,
+      Statistics: [statistic],
     };
 
-    const data = await cloudwatch.getMetricStatistics(params).promise();
-    const body = renderToString(sheet.collectStyles(<App metrics={data} />));
+    const { Datapoints } = await cloudwatch.getMetricStatistics(params).promise();
+    console.log(Datapoints);
+    const body = renderToString(
+      sheet.collectStyles(<App data={Datapoints} statistic={statistic} />),
+    );
 
-    return render(body, METRIC_NAME, sheet, res);
+    return render(body, metricName, sheet, res);
   } catch (error) {
     console.log(error);
     const body = renderToString(sheet.collectStyles(<Error error={error.stack} />));

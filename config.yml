@@ -1,4 +1,8 @@
 METRIC_NAME: AWS/Billing//EstimatedCharges
-PERIOD: 1 day
+DURATION: 15 days
 ALLOW_CUSTOM_METRIC: false
 ALLOW_CUSTOM_DATE: false
+STATISTIC: Average
+DIMENSIONS:
+  - Name: Currency
+    Value: USD
