@@ -35,6 +35,17 @@
     "dev": "AWS_REGION=us-east-1 npm run build && npm run offline",
     "watch": "nodemon"
   },
-  "author": "Rafal Wilinski",
-  "license": "MIT"
+  "author": {
+    "name": "Rafal Wilinski",
+    "email": "raf.wilinski@gmail.com",
+    "url": "https://github.com/RafalWilinski/"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/RafalWilinski/cloudwatch-public-metrics.git"
+  },
+  "license": "MIT",
+  "engines": {
+    "node": ">= 4"
+  }
 }

@@ -1,4 +1,4 @@
-service: lambda-dashboard
+service: cloudwatch-public-metrics
 
 provider:
   name: aws
