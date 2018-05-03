@@ -6,7 +6,7 @@ Expose AWS Cloudwatch Metrics as a public HTML page using AWS Lambda and server-
 
 ## Demo
 
-Todo - my AWS account charges
+[Todo - my AWS account estimated charges](https://yvuuhi6gyg.execute-api.us-east-1.amazonaws.com/dev/)
 
 ## Usage
 First, ensure that you have [Serverless Framework](serverless.com) installed. If not, install it:
