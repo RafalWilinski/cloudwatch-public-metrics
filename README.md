@@ -22,13 +22,13 @@ Clone the repo, install dependencies and deploy function:
 ```
 $ git clone https://github.com/RafalWilinski/cloudwatch-public-metrics
 $ npm install
-$ serverless deploy
+$ npm run deploy
 ```
 
 ## Config
-For now, cloudwatch-public-metrics supports only one way to define config.
+cloudwatch-public-metrics can be configured in two ways:
 
-1. `config.yml` file:
+1. Using `config.yml` file:
 ```
 METRIC_NAME: <Use "Namespace//MetricName" format e.g.: AWS/Billing//EstimatedCharges>   *required*
 METRIC_TITLE: <Add custom title like: "Total AWS Charges">
@@ -39,7 +39,16 @@ METRIC_SUFFIX: <For instance "%", "ms" or "$">
 USAGE_PLAN: <Rate limiting configuration, see: https://serverless.com/framework/docs/providers/aws/guide/serverless.yml/>
 ```
 
-Support using flags is a WIP.
+2. Using CLI flags:
+```sh
+$ npm run deploy -- \
+ --metricName AWS/Billing//EstimatedCharges \
+ --metricTitle Estimated\ Charges \
+ --metricDuration 15\ days \
+ --metricStatistic Average \
+ --metricDimensions Currency\=USD \
+ --metricSuffix \$
+```
 ## Development 
 
 ```sh

@@ -4,12 +4,12 @@ provider:
   name: aws
   runtime: nodejs6.10
   environment:
-    METRIC_NAME: ${file(./config.yml):METRIC_NAME}
-    METRIC_TITLE: ${file(./config.yml):METRIC_TITLE}
-    METRIC_DURATION: ${file(./config.yml):METRIC_DURATION}
-    METRIC_STATISTIC: ${file(./config.yml):METRIC_STATISTIC}
-    METRIC_SUFFIX: ${file(./config.yml):METRIC_SUFFIX}
-    METRIC_DIMENSIONS: ${file(./config.yml):METRIC_DIMENSIONS}
+    METRIC_NAME: ${opt:metricName, file(./config.yml):METRIC_NAME}
+    METRIC_TITLE: ${opt:metricTitle, file(./config.yml):METRIC_TITLE}
+    METRIC_DURATION: ${opt:metricDuration, file(./config.yml):METRIC_DURATION}
+    METRIC_STATISTIC: ${opt:metricStatistic, file(./config.yml):METRIC_STATISTIC}
+    METRIC_SUFFIX: ${opt:metricSuffix, file(./config.yml):METRIC_SUFFIX}
+    METRIC_DIMENSIONS: ${opt:metricDimensions, file(./config.yml):METRIC_DIMENSIONS}
   iamRoleStatements:
     -  Effect: "Allow"
        Action:
