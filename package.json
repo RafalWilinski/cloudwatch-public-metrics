@@ -1,7 +1,7 @@
 {
   "name": "lambda-dashboard",
-  "version": "1.0.0",
-  "description": "",
+  "version": "0.1.0",
+  "description": "Expose AWS Cloudwatch Metrics to public using AWS Lambda and server-side rendering for free.",
   "main": "src/server.js",
   "dependencies": {
     "express": "^4.16.3",
