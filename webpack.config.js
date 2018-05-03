@@ -3,7 +3,7 @@ const nodeExternals = require("webpack-node-externals");
 const path = require("path");
 
 const clientConfig = {
-  entry: "./src/client/index.js",
+  entry: "./src/client/App.js",
   output: {
     path: path.resolve(__dirname, "dist"),
     filename: "bundle.[name].[hash].js",
