@@ -30,13 +30,13 @@ For now, cloudwatch-public-metrics supports only one way to define config.
 
 1. `config.yml` file:
 ```
-METRIC_NAME: <Use "Namespace//MetricName" format e.g.: AWS/Billing//EstimatedCharges>  *required*
+METRIC_NAME: <Use "Namespace//MetricName" format e.g.: AWS/Billing//EstimatedCharges>   *required*
 METRIC_TITLE: <Add custom title like: "Total AWS Charges">
-METRIC_DURATION: <EndDate - StartDate e.g: "7 days"> *required*
-METRIC_STATISTIC: <One of: ["Average", "Sum", "SampleCount", "Minimum", "Maximum"]> *required*
+METRIC_DURATION: <EndDate - StartDate e.g: "7 days">                                    *required*
+METRIC_STATISTIC: <One of: ["Average", "Sum", "SampleCount", "Minimum", "Maximum"]>     *required*
 METRIC_DIMENSIONS: <Comma separated array of Name=Value pair e.g.: "Currency=USD,InstanceId=123">
 METRIC_SUFFIX: <For instance "%", "ms" or "$">
-
+USAGE_PLAN: <Rate limiting configuration, see: https://serverless.com/framework/docs/providers/aws/guide/serverless.yml/>
 ```
 
 Support using flags is a WIP.

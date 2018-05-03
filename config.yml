@@ -4,3 +4,11 @@ METRIC_DURATION: 15 days
 METRIC_STATISTIC: Average
 METRIC_DIMENSIONS: Currency=USD
 METRIC_SUFFIX: $
+USAGE_PLAN:
+  quota:
+    limit: 500000
+    offset: 2
+    period: MONTH
+  throttle:
+    burstLimit: 200
+    rateLimit: 100

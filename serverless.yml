@@ -15,6 +15,13 @@ provider:
        Action:
          - "cloudwatch:GetMetricStatistics"
        Resource: "*"
+  usagePlan: ${file('./config.yml'):USAGE_PLAN}
+
+package:
+  exclude:
+    - assets/
+    - src/
+  excludeDevDependencies: true
 
 plugins:
   - serverless-offline
