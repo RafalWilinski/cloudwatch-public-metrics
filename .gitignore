@@ -8,3 +8,5 @@ jspm_packages
 # Webpack directories
 dist
 .cache
+
+.DS_store
