@@ -7,7 +7,10 @@ app.set("cloudwatch", {
   metricName: process.env.METRIC_NAME,
   metricTitle: process.env.METRIC_TITLE,
   metricDuration: process.env.METRIC_DURATION,
-  metricDimensions: process.env.METRIC_DIMENSIONS,
+  metricDimensions: process.env.METRIC_DIMENSIONS.split(",").map(dimension => ({
+    Name: dimension.split("=")[0],
+    Value: dimension.split("=")[1],
+  })),
   metricStatistic: process.env.METRIC_STATISTIC,
   metricSuffix: process.env.METRIC_SUFFIX,
 });

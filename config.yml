@@ -2,7 +2,5 @@ METRIC_NAME: AWS/Billing//EstimatedCharges
 METRIC_TITLE: Total AWS Charges
 METRIC_DURATION: 15 days
 METRIC_STATISTIC: Average
-METRIC_DIMENSIONS:
-  - Name: Currency
-    Value: USD
+METRIC_DIMENSIONS: Currency=USD
 METRIC_SUFFIX: $

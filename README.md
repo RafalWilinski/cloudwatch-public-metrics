@@ -32,9 +32,7 @@ METRIC_NAME: <Use "Namespace//MetricName" format e.g.: AWS/Billing//EstimatedCha
 METRIC_TITLE: <Add custom title like: "Total AWS Charges">
 METRIC_DURATION: <EndDate - StartDate e.g: "7 days"> *required*
 METRIC_STATISTIC: <One of: ["Average", "Sum", "SampleCount", "Minimum", "Maximum"]> *required*
-METRIC_DIMENSIONS: 
-  - Name: Currency *required*
-    Value: USD *required*
+METRIC_DIMENSIONS: <Comma separated array of Name=Value pair e.g.: "Currency=USD,InstanceId=123">
 METRIC_SUFFIX: <For instance "%", "ms" or "$">
 
 ```
