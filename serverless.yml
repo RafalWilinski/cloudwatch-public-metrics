@@ -3,7 +3,18 @@ service: lambda-dashboard
 provider:
   name: aws
   runtime: nodejs6.10
-  environment: ${file(./config.yml)}
+  environment:
+    METRIC_NAME: ${file(./config.yml):METRIC_NAME}
+    METRIC_TITLE: ${file(./config.yml):METRIC_TITLE}
+    METRIC_DURATION: ${file(./config.yml):METRIC_DURATION}
+    METRIC_STATISTIC: ${file(./config.yml):METRIC_STATISTIC}
+    METRIC_SUFFIX: ${file(./config.yml):METRIC_SUFFIX}
+    METRIC_DIMENSIONS: ${file(./config.yml):METRIC_DIMENSIONS}
+  iamRoleStatements:
+    -  Effect: "Allow"
+       Action:
+         - "cloudwatch:GetMetricStatistics"
+       Resource: "*"
 
 plugins:
   - serverless-offline
