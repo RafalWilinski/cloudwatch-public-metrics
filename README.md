@@ -1,5 +1,7 @@
 # ![Logo](assets/logo.png "cloudwatch-public-metrics")
 
+[![serverless](http://public.serverless.com/badges/v3.svg)](http://www.serverless.com)
+
 Expose AWS Cloudwatch Metrics as a public HTML page using AWS Lambda and server-side rendering, for free. Inspired by [Yan Cui's](https://github.com/theburningmonk) [concept](https://pbs.twimg.com/media/DXmrxJQXcAAGxGB.jpg:large) & [status.github.com](status.github.com)
 
 ![Demo](assets/demo.png "demo")
