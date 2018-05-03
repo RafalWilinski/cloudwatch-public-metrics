@@ -1,6 +1,5 @@
 import React from "react";
 import styled from "styled-components";
-import { VictoryChart, VictoryLine, VictoryTheme } from "victory";
 
 const ErrorContainer = styled.div`
   display: flex;
