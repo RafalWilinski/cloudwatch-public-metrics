@@ -2,7 +2,7 @@ service: cloudwatch-public-metrics
 
 provider:
   name: aws
-  runtime: nodejs6.10
+  runtime: nodejs8.10
   environment:
     METRIC_NAME: ${opt:metricName, file(./config.yml):METRIC_NAME}
     METRIC_TITLE: ${opt:metricTitle, file(./config.yml):METRIC_TITLE}

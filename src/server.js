@@ -65,7 +65,6 @@ server.get("/", async (req, res) => {
     const { Datapoints } = await cloudwatch
       .getMetricStatistics(params)
       .promise();
-    console.log(Datapoints);
 
     const body = renderToString(
       sheet.collectStyles(
