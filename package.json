@@ -1,8 +1,7 @@
 {
   "name": "cloudwatch-public-metrics",
-  "version": "0.1.0",
+  "version": "1.0.0",
   "description": "Expose AWS Cloudwatch Metrics to public using AWS Lambda and server-side rendering for free.",
-  "main": "src/server.js",
   "dependencies": {
     "@zeit/next-css": "1.0.1",
     "@zeit/next-typescript": "1.1.1",
@@ -16,7 +15,7 @@
     "@types/luxon": "1.12.0",
     "@types/react": "16.8.15",
     "@types/victory": "31.0.15",
-    "aws-sdk": "2.445.1",
+    "aws-sdk": "2.445.0",
     "serverless-nextjs-plugin": "1.6.0",
     "serverless-offline": "^4.9.4"
   },
@@ -35,6 +34,6 @@
   },
   "license": "MIT",
   "engines": {
-    "node": ">= 4"
+    "node": ">= 6"
   }
 }
