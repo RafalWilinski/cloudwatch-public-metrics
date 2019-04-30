@@ -10,3 +10,7 @@ dist
 .cache
 
 .DS_store
+
+# Next directories
+.next
+sls-next-build
