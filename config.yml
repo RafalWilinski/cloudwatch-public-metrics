@@ -1,6 +1,9 @@
-METRIC_NAME: AWS/Billing//EstimatedCharges
-METRIC_TITLE: Total AWS Charges
-METRIC_DURATION: 15 days
-METRIC_STATISTIC: Average
-METRIC_DIMENSIONS: Currency=USD
-METRIC_SUFFIX: $
+metrics:
+  - name: AWS/Billing//EstimatedCharges
+    title: Total AWS Charges
+    duration: 15 days
+    statistic: Average
+    dimensions:
+      - Name: Currency
+        Value: USD
+    suffix: $
