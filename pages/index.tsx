@@ -1,42 +1,72 @@
-import React from "react";
-import { VictoryChart, VictoryLine, VictoryAxis } from "victory";
+import React from 'react';
+import { VictoryChart, VictoryLine, VictoryAxis } from 'victory';
 
-import theme from "./theme";
-import "./styles/index.css";
-import getMetrics from "../getMetrics";
-import config from "../config";
+import theme from './theme';
+import getMetrics from '../getMetrics';
+import config, { animationDuration } from '../config';
 
 const Index = (props: any) => (
-  <div className="homePage">
+  <div>
     {props.data.map((metric: MetricData) => (
-      <div>
-        <h2>{metric.title}</h2>
-        <h3>
-          {metric.datapoints[metric.datapoints.length - 1][metric.statistic]}
-          {metric.suffix}
-        </h3>
-        <VictoryChart theme={theme} scale={{ x: "time", y: "linear" }}>
-          <VictoryLine
+      <div
+        style={{
+          display: 'flex',
+          justifyContent: 'center',
+          alignItems: 'center',
+          flexDirection: 'row',
+        }}
+      >
+        <div>
+          <p
             style={{
-              data: { stroke: "#333", strokeWidth: 2 },
-              parent: { border: "1px solid #ccc" }
+              fontSize: '20px',
+              color: '#888',
+              margin: 0,
+              fontFamily: `'Gill Sans', 'Gill Sans MT', 'Ser­avek', 'Trebuchet MS', sans-serif`,
             }}
-            data={metric.datapoints.map((point: any) => ({
-              x: point.Timestamp,
-              y: point[metric.statistic]
-            }))}
-            interpolation="bundle"
-          />
-          <VictoryAxis crossAxis tickCount={5} />
-          <VictoryAxis
-            dependentAxis
-            tickFormat={t => `${t}${metric.suffix}`}
+          >
+            {metric.title}
+          </p>
+          <span
             style={{
-              grid: { stroke: "#bbb" },
-              axis: { stroke: "transparent" }
+              fontSize: '60px',
+              color: '#333',
+              fontFamily: `'Gill Sans', 'Gill Sans MT', 'Ser­avek', 'Trebuchet MS', sans-serif`,
             }}
-          />
-        </VictoryChart>
+          >
+            {metric.datapoints[metric.datapoints.length - 1][metric.statistic]}
+            {metric.suffix}
+          </span>
+        </div>
+        <div style={{ width: '40rem' }}>
+          <VictoryChart
+            theme={theme}
+            height={300}
+            width={600}
+            scale={{ x: 'time', y: 'linear' }}
+          >
+            <VictoryLine
+              style={{
+                data: { stroke: '#333', strokeWidth: 2 },
+                parent: { border: '1px solid #ccc' },
+              }}
+              data={metric.datapoints.map((point: any) => ({
+                x: point.Timestamp,
+                y: point[metric.statistic],
+              }))}
+              interpolation="bundle"
+            />
+            <VictoryAxis crossAxis tickCount={5} />
+            <VictoryAxis
+              dependentAxis
+              tickFormat={t => `${t}${metric.suffix}`}
+              style={{
+                grid: { stroke: '#bbb' },
+                axis: { stroke: 'transparent' },
+              }}
+            />
+          </VictoryChart>
+        </div>
       </div>
     ))}
   </div>

@@ -17,10 +17,6 @@ custom:
         events:
           - http:
               path: post/{slug}
-              request:
-                parameters:
-                  paths:
-                    slug: true
 
 package:
   exclude:

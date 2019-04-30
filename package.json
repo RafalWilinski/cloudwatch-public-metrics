@@ -1,7 +1,7 @@
 {
   "name": "cloudwatch-public-metrics",
   "version": "1.0.0",
-  "description": "Expose AWS Cloudwatch Metrics to public using AWS Lambda and server-side rendering for free.",
+  "description": "Expose AWS Cloudwatch Metrics to public using AWS Lambda and server-side rendering",
   "dependencies": {
     "@zeit/next-css": "1.0.1",
     "@zeit/next-typescript": "1.1.1",
