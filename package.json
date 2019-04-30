@@ -4,36 +4,23 @@
   "description": "Expose AWS Cloudwatch Metrics to public using AWS Lambda and server-side rendering for free.",
   "main": "src/server.js",
   "dependencies": {
-    "express": "4.16.3",
-    "lodash": "4.17.5",
-    "luxon": "1.2.0",
-    "react": "16.3.0",
-    "react-dom": "16.3.0",
-    "serverless-http": "1.5.5",
-    "styled-components": "3.2.5",
-    "victory": "0.26.0"
+    "@zeit/next-css": "1.0.1",
+    "@zeit/next-typescript": "1.1.1",
+    "luxon": "1.12.1",
+    "next": "8.1.0",
+    "react": "^16.8.6",
+    "react-dom": "^16.8.6",
+    "victory": "32.2.0"
   },
   "devDependencies": {
-    "aws-sdk": "2.219.1",
-    "babel-core": "6.26.0",
-    "babel-loader": "7.1.4",
-    "babel-plugin-transform-object-rest-spread": "6.26.0",
-    "babel-plugin-transform-runtime": "6.23.0",
-    "babel-preset-env": "1.6.1",
-    "babel-preset-react": "6.24.1",
-    "nodemon": "1.17.3",
-    "react-universal-component": "2.8.4",
-    "serverless-offline": "3.18.0",
-    "webpack": "3.8.1",
-    "webpack-node-externals": "1.2.0"
+    "@types/react": "16.8.15",
+    "aws-sdk": "2.445.1",
+    "serverless-nextjs-plugin": "1.6.0",
+    "serverless-offline": "^4.9.4"
   },
   "scripts": {
-    "start": "node ./dist/server",
-    "build": "rm -fr dist && webpack",
     "deploy": "npm run build && sls deploy",
-    "offline": "serverless offline;",
-    "dev": "AWS_REGION=us-east-1 npm run build && npm run offline",
-    "watch": "nodemon"
+    "dev": "serverless offline"
   },
   "author": {
     "name": "Rafal Wilinski",
