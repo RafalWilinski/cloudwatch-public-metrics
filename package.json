@@ -16,11 +16,12 @@
     "@types/react": "16.8.15",
     "@types/victory": "31.0.15",
     "aws-sdk": "2.445.0",
+    "serverless": "1.41.1",
     "serverless-nextjs-plugin": "1.6.0",
     "serverless-offline": "^4.9.4"
   },
   "scripts": {
-    "deploy": "npm run build && sls deploy",
+    "deploy": "serverless deploy",
     "dev": "serverless offline"
   },
   "author": {
