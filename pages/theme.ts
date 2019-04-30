@@ -33,15 +33,13 @@ const baseLabelStyles = {
 };
 
 const centeredLabelStyles = Object.assign(
-  { textAnchor: 'middle' },
+  { textAnchor: 'middle', padding: 25 },
   baseLabelStyles,
 );
 
-// Strokes
 const strokeLinecap = 'round';
 const strokeLinejoin = 'round';
 
-// Put it all together...
 const theme: VictoryThemeDefinition = {
   axis: Object.assign(
     {
@@ -52,9 +50,7 @@ const theme: VictoryThemeDefinition = {
         strokeLinecap,
         strokeLinejoin,
       },
-      axisLabel: Object.assign({}, centeredLabelStyles, {
-        padding: 25,
-      }),
+      axisLabel: centeredLabelStyles,
       grid: {
         fill: 'none',
         stroke: 'none',

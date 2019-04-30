@@ -3,7 +3,7 @@ import { VictoryChart, VictoryLine, VictoryAxis } from 'victory';
 
 import theme from './theme';
 import getMetrics from '../getMetrics';
-import config, { animationDuration } from '../config';
+import config from '../config';
 
 const Index = (props: any) => (
   <div>
@@ -38,7 +38,7 @@ const Index = (props: any) => (
             {metric.suffix}
           </span>
         </div>
-        <div style={{ width: '40rem' }}>
+        <div style={{ width: '40rem', marginLeft: '20px' }}>
           <VictoryChart
             theme={theme}
             height={300}
@@ -56,11 +56,21 @@ const Index = (props: any) => (
               }))}
               interpolation="bundle"
             />
-            <VictoryAxis crossAxis tickCount={5} />
+            <VictoryAxis
+              crossAxis
+              tickCount={5}
+              style={{
+                grid: { stroke: 'transparent' },
+                axisLabel: { padding: 20 },
+                tickLabels: { padding: 20 },
+              }}
+            />
             <VictoryAxis
               dependentAxis
               tickFormat={t => `${t}${metric.suffix}`}
               style={{
+                axisLabel: { padding: 20 },
+                tickLabels: { padding: 20 },
                 grid: { stroke: '#bbb' },
                 axis: { stroke: 'transparent' },
               }}
