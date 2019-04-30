@@ -3,36 +3,25 @@ service: cloudwatch-public-metrics
 provider:
   name: aws
   runtime: nodejs8.10
-  environment:
-    METRIC_NAME: ${opt:metricName, file(./config.yml):METRIC_NAME}
-    METRIC_TITLE: ${opt:metricTitle, file(./config.yml):METRIC_TITLE}
-    METRIC_DURATION: ${opt:metricDuration, file(./config.yml):METRIC_DURATION}
-    METRIC_STATISTIC: ${opt:metricStatistic, file(./config.yml):METRIC_STATISTIC}
-    METRIC_SUFFIX: ${opt:metricSuffix, file(./config.yml):METRIC_SUFFIX}
-    METRIC_DIMENSIONS: ${opt:metricDimensions, file(./config.yml):METRIC_DIMENSIONS}
   iamRoleStatements:
-    -  Effect: "Allow"
-       Action:
-         - "cloudwatch:GetMetricStatistics"
-       Resource: "*"
-  usagePlan: ${file('./config.yml'):USAGE_PLAN}
+    - Effect: "Allow"
+      Action:
+        - "cloudwatch:GetMetricStatistics"
+      Resource: "*"
+
+custom:
+  serverless-nextjs:
+    nextConfigDir: ./
+    pageConfig:
+      post:
+        events:
+          - http:
+              path: post/{slug}
 
 package:
   exclude:
-    - assets/
-    - src/
-  excludeDevDependencies: true
+    - ./**
 
 plugins:
+  - serverless-nextjs-plugin
   - serverless-offline
-
-functions:
-  main:
-    handler: lambda.handler
-    events:
-      - http:
-          path: /
-          method: ANY
-      - http:
-          path: /{any+}
-          method: ANY
